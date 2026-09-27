@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { 
   Beaker, 
   Sparkles, 
@@ -17,13 +18,13 @@ import {
   Phone,
   Microscope,
   Zap,
-  Activity
+  Activity,
+  ArrowRight
 } from 'lucide-react';
 
 export default function Home() {
   const [lang, setLang] = useState<'zh' | 'en'>('zh');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<'home' | 'science' | 'network'>('home');
 
   // 多語言文本
   const t = {
@@ -75,25 +76,31 @@ export default function Home() {
         subtitle: '針對不同生活情境研發，提供精準的身體修復與能量補充。',
         items: [
           {
-            id: 'sleep',
-            tag: '深層睡眠',
-            name: 'PATCH ON + Deep Sleep',
-            desc: '結合褪黑激素、GABA與褪黑因子，微分子透皮幫助快速入眠與深層修復。',
-            specs: '30 貼/盒 | 8小時持續釋放'
+            id: 'hangover',
+            tag: '現正熱賣 ‧ 旗艦款',
+            isHot: true,
+            name: 'PATCH ON + 宿醉貼',
+            enName: 'Hangover Patch',
+            desc: '美國研發創新配方，結合維他命B群與綠茶抗氧化劑，透皮吸收趕走宿醉、回復活力。',
+            specs: '5 貼/盒 | 美國製造 | 長效24小時'
           },
           {
             id: 'energy',
-            tag: '日間能量',
-            name: 'PATCH ON + Daily Boost',
-            desc: '高純度維生素 B 群與天然輔酶 Q10，為忙碌職場與運動提供全天候專注力。',
-            specs: '30 貼/盒 | 清爽無負擔'
+            tag: '即將推出 COMING SOON',
+            isHot: false,
+            name: 'PATCH ON + 能量貼',
+            enName: 'Energy Boost Patch',
+            desc: '專為加班熬夜族與運動健身設計，持續穩定補充維他命B12與天然咖啡因，提神醒腦。',
+            specs: '預計近期登場 | 全天候精力補給'
           },
           {
-            id: 'recovery',
-            tag: '宿醉與修復',
-            name: 'PATCH ON + Party Recovery',
-            desc: '水溶性維生素與薑黃素提取物，迅速補充派對與飲酒後的養分流失。',
-            specs: '12 貼/盒 | 應酬必備'
+            id: 'beauty',
+            tag: '即將推出 COMING SOON',
+            isHot: false,
+            name: 'PATCH ON + 美顏貼',
+            enName: 'Beauty Collagen Patch',
+            desc: '突破傳統口服吸收率瓶頸，透皮長效釋放膠原蛋白與玻尿酸，隨身養膚水潤緊緻。',
+            specs: '預計近期登場 | 美容抗氧配方'
           }
         ]
       },
@@ -101,12 +108,10 @@ export default function Home() {
         badge: 'RETAIL & DISTRIBUTION',
         title: '銷售網絡與合作據點',
         subtitle: 'PATCH ON + 產品已進駐全港多家指定藥局、連鎖健美通路與專業診所。',
-        onlineStores: '合作線上平台',
-        physicalStores: '實體銷售門市',
         stores: [
+          { name: '莎莎 SaSa 指定門市', type: '連鎖美妝藥局', loc: '全港各大指定分店' },
           { name: '萬寧 Mannings 指定旗艦門市', type: '連鎖藥妝', loc: '中環 / 銅鑼灣 / 尖沙咀店' },
           { name: '屈臣氏 Watsons 健康專櫃', type: '連鎖藥妝', loc: '金鐘 / 旺角 / 沙田店' },
-          { name: 'PATCH ON + 合作診所及醫療中心', type: '專業診所', loc: '中環威靈頓街醫療大樓' },
           { name: 'HKTVmall 官方旗艦店', type: '線上平台', loc: '網購直送香港全區' }
         ],
         partnerB2B: '成為合作藥局或分銷商？',
@@ -163,28 +168,34 @@ export default function Home() {
       },
       products: {
         title: 'PATCH ON + Scientific Formulations',
-        subtitle: 'Engineered for modern lifestyles to support optimal recovery and vitality.',
+        subtitle: 'Engineered for modern lifestyles to support optimal recovery, vitality, and beauty.',
         items: [
           {
-            id: 'sleep',
-            tag: 'Deep Sleep',
-            name: 'PATCH ON + Deep Sleep',
-            desc: 'Synergistic formulation of Melatonin & GABA for rapid sleep onset and deep restoration.',
-            specs: '30 Patches / Pack | 8-Hr Sustained Release'
+            id: 'hangover',
+            tag: 'HOT ITEM ‧ FLAGSHIP',
+            isHot: true,
+            name: 'PATCH ON + Hangover Patch',
+            enName: 'Hangover Patch',
+            desc: 'USA formulated with Vitamin B Complex & Green Tea Extract for transdermal hangover recovery.',
+            specs: '5 Patches / Pack | Made in USA | 24-Hr Effect'
           },
           {
             id: 'energy',
-            tag: 'Daily Vitality',
-            name: 'PATCH ON + Daily Boost',
-            desc: 'High-purity Complex B vitamins & CoQ10 to boost sustained mental focus and stamina.',
-            specs: '30 Patches / Pack | Clean Energy'
+            tag: 'COMING SOON',
+            isHot: false,
+            name: 'PATCH ON + Energy Boost Patch',
+            enName: 'Energy Boost Patch',
+            desc: 'Sustained delivery of Vitamin B12 and natural caffeine for steady mental focus.',
+            specs: 'Launching Soon | Clean Energy Infusion'
           },
           {
-            id: 'recovery',
-            tag: 'Party Recovery',
-            name: 'PATCH ON + Party Recovery',
-            desc: 'Electrolytes and Curcumin extract to rapidly replenish nutrient depletion post-event.',
-            specs: '12 Patches / Pack | Essential Companion'
+            id: 'beauty',
+            tag: 'COMING SOON',
+            isHot: false,
+            name: 'PATCH ON + Beauty Collagen Patch',
+            enName: 'Beauty Collagen Patch',
+            desc: 'Transdermal delivery of collagen & hyaluronic acid for deep hydration and anti-aging.',
+            specs: 'Launching Soon | Radiant Skin Formula'
           }
         ]
       },
@@ -192,12 +203,10 @@ export default function Home() {
         badge: 'RETAIL & DISTRIBUTION',
         title: 'Where to Buy & Retail Network',
         subtitle: 'PATCH ON + is available at selected pharmacies, wellness chains, and clinics across Hong Kong.',
-        onlineStores: 'Online Partners',
-        physicalStores: 'Physical Retailers',
         stores: [
+          { name: 'SaSa Selected Stores', type: 'Beauty & Health', loc: 'Selected Hong Kong Stores' },
           { name: 'Mannings Selected Flagships', type: 'Pharmacy Chain', loc: 'Central / Causeway Bay / TST' },
           { name: 'Watsons Health Counters', type: 'Pharmacy Chain', loc: 'Admiralty / Mong Kok / Sha Tin' },
-          { name: 'Partner Medical Clinics', type: 'Clinics', loc: 'Wellington St. Medical Centre, Central' },
           { name: 'HKTVmall Official Store', type: 'Online Store', loc: 'HK-Wide Delivery' }
         ],
         partnerB2B: 'Become a Partner or Distributor?',
@@ -221,43 +230,34 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           {/* Logo */}
-          <div 
-            className="flex items-center space-x-2 cursor-pointer" 
-            onClick={() => setActiveTab('home')}
-          >
+          <Link href="/" className="flex items-center space-x-2 cursor-pointer">
             <div className="w-9 h-9 bg-amber-400 rounded-lg flex items-center justify-center font-black text-slate-950 text-xl shadow-sm">
               +
             </div>
             <span className="text-2xl font-black tracking-wider text-slate-900">
               PATCH ON<span className="text-amber-500">+</span>
             </span>
-          </div>
+          </Link>
 
           {/* Desktop Nav Items */}
           <div className="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600">
-            <button 
-              onClick={() => setActiveTab('home')} 
-              className={`hover:text-amber-500 transition-colors ${activeTab === 'home' ? 'text-amber-500 font-bold' : ''}`}
-            >
+            <Link href="/" className="hover:text-amber-500 transition-colors text-amber-500 font-bold">
               {text.nav.home}
-            </button>
-            <button 
-              onClick={() => setActiveTab('science')} 
-              className={`hover:text-amber-500 transition-colors ${activeTab === 'science' ? 'text-amber-500 font-bold' : ''}`}
-            >
+            </Link>
+            <a href="#science" className="hover:text-amber-500 transition-colors">
               {text.nav.science}
-            </button>
-            <button 
-              onClick={() => setActiveTab('network')} 
-              className={`hover:text-amber-500 transition-colors ${activeTab === 'network' ? 'text-amber-500 font-bold' : ''}`}
-            >
+            </a>
+            <Link href="/products" className="hover:text-amber-500 transition-colors flex items-center space-x-1">
+              <span>{text.nav.products}</span>
+              <span className="bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded-full">New</span>
+            </Link>
+            <Link href="/retail-network" className="hover:text-amber-500 transition-colors">
               {text.nav.network}
-            </button>
+            </Link>
           </div>
 
           {/* Right Actions: Lang Switcher & Network Btn */}
           <div className="hidden md:flex items-center space-x-4">
-            {/* 語言切換按鈕 */}
             <button 
               onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}
               className="px-3 py-1.5 text-xs font-bold border border-slate-200 rounded-full hover:bg-slate-50 transition-all text-slate-700"
@@ -265,13 +265,13 @@ export default function Home() {
               {lang === 'zh' ? 'EN' : '中文'}
             </button>
 
-            <button 
-              onClick={() => setActiveTab('network')}
+            <Link 
+              href="/retail-network"
               className="flex items-center space-x-2 bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-amber-400/20"
             >
               <Store className="w-4 h-4 text-amber-400" />
               <span>{text.hero.btnNetwork}</span>
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -294,256 +294,277 @@ export default function Home() {
         {/* Mobile Dropdown */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-white border-b border-slate-100 px-6 py-6 space-y-4">
-            <button 
-              onClick={() => { setActiveTab('home'); setMobileMenuOpen(false); }}
-              className="block w-full text-left font-bold text-slate-800 py-2"
+            <Link 
+              href="/" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="block font-bold text-slate-800 py-2"
             >
               {text.nav.home}
-            </button>
-            <button 
-              onClick={() => { setActiveTab('science'); setMobileMenuOpen(false); }}
-              className="block w-full text-left font-bold text-slate-800 py-2"
+            </Link>
+            <a 
+              href="#science" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="block font-bold text-slate-800 py-2"
             >
               {text.nav.science}
-            </button>
-            <button 
-              onClick={() => { setActiveTab('network'); setMobileMenuOpen(false); }}
-              className="block w-full text-left font-bold text-slate-800 py-2"
+            </a>
+            <Link 
+              href="/products" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="block font-bold text-amber-600 py-2"
+            >
+              {text.nav.products} (最新貼片)
+            </Link>
+            <Link 
+              href="/retail-network" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="block font-bold text-slate-800 py-2"
             >
               {text.nav.network}
-            </button>
-            <button 
-              onClick={() => { setActiveTab('network'); setMobileMenuOpen(false); }}
+            </Link>
+            <Link 
+              href="/retail-network"
+              onClick={() => setMobileMenuOpen(false)}
               className="w-full bg-amber-400 text-slate-950 font-bold py-3 rounded-xl flex items-center justify-center space-x-2 shadow-sm"
             >
               <Store className="w-4 h-4" />
               <span>{text.hero.btnNetwork}</span>
-            </button>
+            </Link>
           </div>
         )}
       </nav>
 
       {/* 2. Hero 區塊 (科學白色高質感風格) */}
-      {(activeTab === 'home' || activeTab === 'science') && (
-        <section className="pt-32 pb-20 bg-gradient-to-b from-slate-50/80 via-white to-white relative overflow-hidden">
-          {/* 背景科學網格點綴 */}
-          <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-60 pointer-events-none" />
-          
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center max-w-3xl mx-auto">
-              
-              {/* Science Badge */}
-              <div className="inline-flex items-center space-x-2 bg-amber-50 border border-amber-200/80 px-4 py-1.5 rounded-full mb-6">
-                <Beaker className="w-4 h-4 text-amber-600" />
-                <span className="text-xs font-extrabold tracking-wider text-amber-900 uppercase">
-                  {text.hero.badge}
-                </span>
-              </div>
-
-              {/* Title */}
-              <h1 className="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight leading-tight mb-6">
-                {text.hero.titlePre} <br />
-                <span className="relative inline-block text-slate-950">
-                  {text.hero.titleHighlight}
-                  <span className="absolute bottom-1 left-0 right-0 h-3 bg-amber-300/60 -z-10 rounded-sm" />
-                </span>
-              </h1>
-
-              {/* Subtitle */}
-              <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-10 font-normal">
-                {text.hero.subtitle}
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button 
-                  onClick={() => setActiveTab('network')}
-                  className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 px-8 py-4 rounded-full font-bold text-base transition-all shadow-lg shadow-amber-400/25 flex items-center justify-center space-x-2"
-                >
-                  <MapPin className="w-5 h-5" />
-                  <span>{text.hero.btnNetwork}</span>
-                </button>
-                <button 
-                  onClick={() => setActiveTab('science')}
-                  className="w-full sm:w-auto bg-white border border-slate-200 hover:bg-slate-50 text-slate-800 px-8 py-4 rounded-full font-bold text-base transition-all flex items-center justify-center space-x-2"
-                >
-                  <Microscope className="w-5 h-5 text-slate-500" />
-                  <span>{text.hero.btnScience}</span>
-                </button>
-              </div>
-
+      <section className="pt-32 pb-20 bg-gradient-to-b from-slate-50/80 via-white to-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-60 pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto">
+            
+            <div className="inline-flex items-center space-x-2 bg-amber-50 border border-amber-200/80 px-4 py-1.5 rounded-full mb-6">
+              <Beaker className="w-4 h-4 text-amber-600" />
+              <span className="text-xs font-extrabold tracking-wider text-amber-900 uppercase">
+                {text.hero.badge}
+              </span>
             </div>
 
-            {/* 3 Key Stats Badges */}
-            <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
-              {text.stats.map((stat, idx) => (
-                <div key={idx} className="p-8 rounded-2xl bg-white border border-slate-100 shadow-xl shadow-slate-100/80 hover:border-amber-200 transition-all">
-                  <div className="text-3xl sm:text-4xl font-black text-amber-500 mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-base font-bold text-slate-900 mb-1">
-                    {stat.label}
-                  </div>
-                  <div className="text-xs text-slate-500">
-                    {stat.desc}
-                  </div>
-                </div>
-              ))}
+            <h1 className="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight leading-tight mb-6">
+              {text.hero.titlePre} <br />
+              <span className="relative inline-block text-slate-950">
+                {text.hero.titleHighlight}
+                <span className="absolute bottom-1 left-0 right-0 h-3 bg-amber-300/60 -z-10 rounded-sm" />
+              </span>
+            </h1>
+
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-10 font-normal">
+              {text.hero.subtitle}
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link 
+                href="/products"
+                className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 px-8 py-4 rounded-full font-bold text-base transition-all shadow-lg shadow-amber-400/25 flex items-center justify-center space-x-2"
+              >
+                <Sparkles className="w-5 h-5" />
+                <span>瀏覽貼片系列 (宿醉/能量/美顏)</span>
+              </Link>
+              <Link 
+                href="/retail-network"
+                className="w-full sm:w-auto bg-white border border-slate-200 hover:bg-slate-50 text-slate-800 px-8 py-4 rounded-full font-bold text-base transition-all flex items-center justify-center space-x-2"
+              >
+                <MapPin className="w-5 h-5 text-slate-500" />
+                <span>{text.hero.btnNetwork}</span>
+              </Link>
             </div>
 
           </div>
-        </section>
-      )}
+
+          <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {text.stats.map((stat, idx) => (
+              <div key={idx} className="p-8 rounded-2xl bg-white border border-slate-100 shadow-xl shadow-slate-100/80 hover:border-amber-200 transition-all">
+                <div className="text-3xl sm:text-4xl font-black text-amber-500 mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-base font-bold text-slate-900 mb-1">
+                  {stat.label}
+                </div>
+                <div className="text-xs text-slate-500">
+                  {stat.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
 
       {/* 3. 科學透皮原理區塊 Science Explanation */}
-      {(activeTab === 'home' || activeTab === 'science') && (
-        <section className="py-20 bg-slate-900 text-white relative">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <span className="text-amber-400 font-bold text-xs tracking-widest uppercase mb-2 block">
-                {text.scienceSection.badge}
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                {text.scienceSection.title}
-              </h2>
-              <p className="text-slate-400 text-sm sm:text-base">
-                {text.scienceSection.desc}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {text.scienceSection.features.map((item, idx) => {
-                const IconComp = item.icon;
-                return (
-                  <div key={idx} className="bg-slate-800/80 border border-slate-700/60 p-8 rounded-2xl hover:border-amber-400/50 transition-all">
-                    <div className="w-12 h-12 bg-amber-400/10 border border-amber-400/30 rounded-xl flex items-center justify-center text-amber-400 mb-6">
-                      <IconComp className="w-6 h-6" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 text-white">
-                      {item.title}
-                    </h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
+      <section id="science" className="py-20 bg-slate-900 text-white relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-amber-400 font-bold text-xs tracking-widest uppercase mb-2 block">
+              {text.scienceSection.badge}
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              {text.scienceSection.title}
+            </h2>
+            <p className="text-slate-400 text-sm sm:text-base">
+              {text.scienceSection.desc}
+            </p>
           </div>
-        </section>
-      )}
 
-      {/* 4. 產品系列展售 (無直接購買按鈕，改為據點指引) */}
-      {activeTab === 'home' && (
-        <section className="py-20 bg-slate-50/50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <h2 className="text-3xl font-black text-slate-900 mb-4">
-                {text.products.title}
-              </h2>
-              <p className="text-slate-600 text-sm sm:text-base">
-                {text.products.subtitle}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {text.products.items.map((prod) => (
-                <div key={prod.id} className="bg-white rounded-2xl border border-slate-200/80 p-8 flex flex-col justify-between hover:shadow-lg transition-all">
-                  <div>
-                    <span className="inline-block bg-amber-100 text-amber-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
-                      {prod.tag}
-                    </span>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3">
-                      {prod.name}
-                    </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                      {prod.desc}
-                    </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {text.scienceSection.features.map((item, idx) => {
+              const IconComp = item.icon;
+              return (
+                <div key={idx} className="bg-slate-800/80 border border-slate-700/60 p-8 rounded-2xl hover:border-amber-400/50 transition-all">
+                  <div className="w-12 h-12 bg-amber-400/10 border border-amber-400/30 rounded-xl flex items-center justify-center text-amber-400 mb-6">
+                    <IconComp className="w-6 h-6" />
                   </div>
-
-                  <div>
-                    <div className="text-xs font-semibold text-slate-400 mb-6 border-t border-slate-100 pt-4">
-                      {prod.specs}
-                    </div>
-                    <button 
-                      onClick={() => setActiveTab('network')}
-                      className="w-full bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-white font-bold py-3 rounded-xl text-sm transition-all flex items-center justify-center space-x-2"
-                    >
-                      <MapPin className="w-4 h-4" />
-                      <span>{text.hero.btnNetwork}</span>
-                    </button>
-                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-white">
+                    {item.title}
+                  </h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
-      {/* 5. 銷售網絡分頁 / 區塊 (Retail Network Page) */}
-      {(activeTab === 'home' || activeTab === 'network') && (
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <span className="text-amber-600 font-extrabold text-xs tracking-widest uppercase mb-2 block">
-                {text.network.badge}
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">
-                {text.network.title}
-              </h2>
-              <p className="text-slate-600 text-sm sm:text-base">
-                {text.network.subtitle}
-              </p>
-            </div>
+      {/* 4. 產品系列展售 (含有宿醉貼、能量貼與美顏貼) */}
+      <section className="py-20 bg-slate-50/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-3xl font-black text-slate-900 mb-4">
+              {text.products.title}
+            </h2>
+            <p className="text-slate-600 text-sm sm:text-base">
+              {text.products.subtitle}
+            </p>
+          </div>
 
-            {/* Store List */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-              {text.network.stores.map((store, idx) => (
-                <div key={idx} className="p-6 rounded-2xl border border-slate-200/80 bg-slate-50/50 flex items-start space-x-4 hover:border-amber-400 transition-all">
-                  <div className="w-10 h-10 bg-amber-400 text-slate-950 rounded-xl flex items-center justify-center flex-shrink-0 font-bold">
-                    <Store className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="flex items-center space-x-2 mb-1">
-                      <span className="text-xs font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">
-                        {store.type}
-                      </span>
-                    </div>
-                    <h4 className="text-lg font-bold text-slate-900 mb-1">
-                      {store.name}
-                    </h4>
-                    <p className="text-slate-500 text-xs flex items-center space-x-1">
-                      <MapPin className="w-3.5 h-3.5 text-slate-400" />
-                      <span>{store.loc}</span>
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* B2B Partnership Box */}
-            <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
-              <div>
-                <h3 className="text-2xl font-bold mb-2 text-white">
-                  {text.network.partnerB2B}
-                </h3>
-                <p className="text-slate-300 text-sm max-w-xl">
-                  {text.network.partnerB2BDesc}
-                </p>
-              </div>
-              <a 
-                href="mailto:partner@patchon.com"
-                className="whitespace-nowrap bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-8 py-4 rounded-full text-sm transition-all shadow-lg shadow-amber-400/20 flex items-center space-x-2"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {text.products.items.map((prod) => (
+              <div 
+                key={prod.id} 
+                className={`rounded-2xl border p-8 flex flex-col justify-between hover:shadow-xl transition-all ${
+                  prod.isHot 
+                    ? 'bg-white border-amber-300 ring-2 ring-amber-400/20' 
+                    : 'bg-white border-slate-200/80'
+                }`}
               >
-                <Mail className="w-4 h-4" />
-                <span>{text.network.btnContact}</span>
-              </a>
-            </div>
+                <div>
+                  <span className={`inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 ${
+                    prod.isHot 
+                      ? 'bg-amber-400 text-slate-950 font-extrabold' 
+                      : 'bg-slate-100 text-slate-600'
+                  }`}>
+                    {prod.tag}
+                  </span>
+                  <h3 className="text-2xl font-black text-slate-900 mb-1">
+                    {prod.name}
+                  </h3>
+                  <p className="text-xs font-bold text-slate-400 mb-3">{prod.enName}</p>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                    {prod.desc}
+                  </p>
+                </div>
 
+                <div>
+                  <div className="text-xs font-semibold text-slate-400 mb-6 border-t border-slate-100 pt-4">
+                    {prod.specs}
+                  </div>
+                  <Link 
+                    href="/products"
+                    className={`w-full font-bold py-3.5 rounded-xl text-xs transition-all flex items-center justify-center space-x-2 ${
+                      prod.isHot 
+                        ? 'bg-slate-900 hover:bg-amber-400 hover:text-slate-950 text-white' 
+                        : 'bg-slate-100 hover:bg-slate-200 text-slate-800'
+                    }`}
+                  >
+                    <span>查看完整產品細節</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
-        </section>
-      )}
+
+          <div className="text-center mt-12">
+            <Link 
+              href="/products"
+              className="inline-flex items-center space-x-2 text-sm font-bold text-amber-600 hover:text-amber-700 underline underline-offset-4"
+            >
+              <span>查看全部產品與成分規格</span>
+              <ChevronRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. 銷售網絡區塊 */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-amber-600 font-extrabold text-xs tracking-widest uppercase mb-2 block">
+              {text.network.badge}
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-4">
+              {text.network.title}
+            </h2>
+            <p className="text-slate-600 text-sm sm:text-base">
+              {text.network.subtitle}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+            {text.network.stores.map((store, idx) => (
+              <div key={idx} className="p-6 rounded-2xl border border-slate-200/80 bg-slate-50/50 flex items-start space-x-4 hover:border-amber-400 transition-all">
+                <div className="w-10 h-10 bg-amber-400 text-slate-950 rounded-xl flex items-center justify-center flex-shrink-0 font-bold">
+                  <Store className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="flex items-center space-x-2 mb-1">
+                    <span className="text-xs font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">
+                      {store.type}
+                    </span>
+                  </div>
+                  <h4 className="text-lg font-bold text-slate-900 mb-1">
+                    {store.name}
+                  </h4>
+                  <p className="text-slate-500 text-xs flex items-center space-x-1">
+                    <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                    <span>{store.loc}</span>
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-2 text-white">
+                {text.network.partnerB2B}
+              </h3>
+              <p className="text-slate-300 text-sm max-w-xl">
+                {text.network.partnerB2BDesc}
+              </p>
+            </div>
+            <a 
+              href="mailto:partner@patchon.com"
+              className="whitespace-nowrap bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-8 py-4 rounded-full text-sm transition-all shadow-lg shadow-amber-400/20 flex items-center space-x-2"
+            >
+              <Mail className="w-4 h-4" />
+              <span>{text.network.btnContact}</span>
+            </a>
+          </div>
+
+        </div>
+      </section>
 
       {/* 6. Footer 頁尾 */}
       <footer className="bg-slate-950 text-slate-400 text-xs py-12 border-t border-slate-900">
