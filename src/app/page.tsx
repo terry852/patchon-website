@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Microscope,
   Zap,
@@ -54,7 +55,7 @@ export default function Home() {
           'PATCH ON + 以透皮技術，讓活性營養經皮膚吸收，毋須經過腸胃。唔使食、唔使沖水，細細片放銀包都得。',
         btnProducts: '瀏覽貼片系列',
         btnHowto: '了解點用',
-        imageAlt: '[產品相片：包裝盒 + 貼劑]',
+        imageAlt: 'PATCH ON 宿醉貼包裝盒及單片裝',
       },
       // 只保留品牌官方資料中已有的數字；95% / 100% 等數字待有測試報告再加
       stats: [
@@ -84,7 +85,7 @@ export default function Home() {
       products: {
         eyebrow: 'Product series',
         title: 'PATCH ON + 貼片系列',
-        subtitle: '針對不同生活情境研發，由宿醉貼開始。',
+        subtitle: '針對不同生活情境研發：宿醉貼現已有售，斷食、美顏、護肝系列即將推出。',
         more: '查看完整產品細節',
         all: '查看全部產品與成分規格',
         items: [
@@ -96,24 +97,41 @@ export default function Home() {
             enName: 'Hangover Patch',
             desc: '美國研發配方，含維他命 B 群與綠茶萃取，飲酒前貼上，陪你盡興到最後。',
             specs: '5 貼/盒 ‧ 美國製造 ‧ 效用可長達 24 小時',
+            image: '/images/pack-hangover.webp',
+            packBg: '#F5C047',
           },
           {
-            id: 'energy',
+            id: 'fasting',
             tag: '即將推出',
             isHot: false,
-            name: '能量貼',
-            enName: 'Energy Boost Patch',
-            desc: '為加班族與運動人士設計，含維他命 B12 與天然咖啡因。',
-            specs: '即將登場',
+            name: '斷食維他命補充貼',
+            enName: 'Fasting Vitamin Patch',
+            desc: '為斷食日而設，持續補充，維持全日狀態。',
+            specs: '5 貼/盒 ‧ 即將登場',
+            image: '/images/pack-fasting.webp',
+            packBg: '#83D4F1',
           },
           {
             id: 'beauty',
             tag: '即將推出',
             isHot: false,
             name: '美顏貼',
-            enName: 'Beauty Collagen Patch',
-            desc: '含膠原蛋白與玻尿酸，隨身養膚。',
-            specs: '即將登場',
+            enName: 'Beauty Patch',
+            desc: '為日常護膚而設，隨身養膚。',
+            specs: '5 貼/盒 ‧ 即將登場',
+            image: '/images/pack-beauty.webp',
+            packBg: '#F5AFB7',
+          },
+          {
+            id: 'liver',
+            tag: '即將推出',
+            isHot: false,
+            name: '護肝貼',
+            enName: 'Liver Care Patch',
+            desc: '為經常應酬、作息繁忙的你而設，日常保養。',
+            specs: '5 貼/盒 ‧ 即將登場',
+            image: '/images/pack-liver.webp',
+            packBg: '#003845',
           },
         ],
       },
@@ -187,7 +205,7 @@ export default function Home() {
           'PATCH ON + uses transdermal delivery so active nutrients are absorbed through the skin, not the gut. No pills, no water — small enough for your wallet.',
         btnProducts: 'Browse the series',
         btnHowto: 'How to use',
-        imageAlt: '[Product photo: box + patch]',
+        imageAlt: 'PATCH ON Hangover Patch box and single sachet',
       },
       stats: [
         { value: '20 min', label: 'Before drinking', desc: 'The ideal time to apply' },
@@ -216,7 +234,7 @@ export default function Home() {
       products: {
         eyebrow: 'Product series',
         title: 'The PATCH ON + series',
-        subtitle: 'Developed for everyday moments — starting with the Hangover Patch.',
+        subtitle: 'Made for everyday moments. The Hangover Patch is available now; Fasting, Beauty and Liver Care are coming soon.',
         more: 'View product details',
         all: 'View all products and ingredients',
         items: [
@@ -228,24 +246,41 @@ export default function Home() {
             enName: '宿醉貼',
             desc: 'US-developed formula with Vitamin B complex and green tea extract. Apply before drinking and enjoy the night.',
             specs: '5 patches / box ‧ Made in USA ‧ Lasts up to 24 hours',
+            image: '/images/pack-hangover.webp',
+            packBg: '#F5C047',
           },
           {
-            id: 'energy',
+            id: 'fasting',
             tag: 'Coming soon',
             isHot: false,
-            name: 'Energy Boost Patch',
-            enName: '能量貼',
-            desc: 'For late nights and workouts, with Vitamin B12 and natural caffeine.',
-            specs: 'Launching soon',
+            name: 'Fasting Vitamin Patch',
+            enName: '斷食維他命補充貼',
+            desc: 'Made for fasting days — steady top-up to keep you going all day.',
+            specs: '5 patches / box ‧ Launching soon',
+            image: '/images/pack-fasting.webp',
+            packBg: '#83D4F1',
           },
           {
             id: 'beauty',
             tag: 'Coming soon',
             isHot: false,
-            name: 'Beauty Collagen Patch',
+            name: 'Beauty Patch',
             enName: '美顏貼',
-            desc: 'With collagen and hyaluronic acid for on-the-go skin care.',
-            specs: 'Launching soon',
+            desc: 'Made for everyday skin care, on the go.',
+            specs: '5 patches / box ‧ Launching soon',
+            image: '/images/pack-beauty.webp',
+            packBg: '#F5AFB7',
+          },
+          {
+            id: 'liver',
+            tag: 'Coming soon',
+            isHot: false,
+            name: 'Liver Care Patch',
+            enName: '護肝貼',
+            desc: 'Made for busy schedules and frequent social drinking — everyday care.',
+            specs: '5 patches / box ‧ Launching soon',
+            image: '/images/pack-liver.webp',
+            packBg: '#003845',
           },
         ],
       },
@@ -424,14 +459,16 @@ export default function Home() {
           </div>
 
           <div className="flex min-w-0 flex-[1_1_360px] justify-center">
-            {/* TODO：換成 <Image src="/product.png" ... /> */}
-            <div
-              role="img"
-              aria-label={text.hero.imageAlt}
-              className="flex aspect-square w-full max-w-[440px] flex-col items-center justify-center gap-3 rounded-[32px] border border-dashed border-[#4A4F62] bg-[#1E2130] text-[15px] text-[#9A9DAB]"
-            >
-              <div className="h-[120px] w-[180px] rounded-3xl bg-[#F2B544] opacity-90" />
-              <span>{text.hero.imageAlt}</span>
+            <div className="w-full max-w-[460px] overflow-hidden rounded-[32px] bg-[#FEFEFE]">
+              <Image
+                src="/images/hangover-box.webp"
+                alt={text.hero.imageAlt}
+                width={1600}
+                height={1600}
+                priority
+                sizes="(min-width: 1024px) 460px, 90vw"
+                className="h-auto w-full"
+              />
             </div>
           </div>
         </div>
@@ -502,15 +539,20 @@ export default function Home() {
             <h2 className="m-0 text-[clamp(30px,4vw,44px)] font-black leading-tight">{text.products.title}</h2>
             <p className="m-0 text-[#4A4D58]">{text.products.subtitle}</p>
           </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {text.products.items.map((p) => (
               <div
                 key={p.id}
-                className={`flex flex-col justify-between gap-6 rounded-3xl p-8 ${
+                className={`flex flex-col justify-between gap-6 overflow-hidden rounded-3xl ${
                   p.isHot ? 'bg-[#12141C] text-[#F6F3EC]' : 'bg-white'
                 }`}
               >
-                <div className="flex flex-col gap-3">
+                <div className="px-5 pt-5">
+                  <div className="overflow-hidden rounded-2xl" style={{ backgroundColor: p.packBg }}>
+                    <Image src={p.image} alt={`${p.name} ${p.enName}`} width={540} height={484} sizes="(min-width: 1024px) 260px, (min-width: 640px) 45vw, 90vw" className="h-auto w-full" />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-3 px-7">
                   <span
                     className={`self-start rounded-full px-3 py-1 text-xs font-bold ${
                       p.isHot ? 'bg-[#F2B544] text-[#12141C]' : 'bg-[#EAE5D8] text-[#4A4D58]'
@@ -522,7 +564,7 @@ export default function Home() {
                   <p className={`m-0 text-xs font-bold ${p.isHot ? 'text-[#9A9DAB]' : 'text-[#6E6A60]'}`}>{p.enName}</p>
                   <p className={`m-0 text-[15px] leading-[1.7] ${p.isHot ? 'text-[#C9C6BD]' : 'text-[#4A4D58]'}`}>{p.desc}</p>
                 </div>
-                <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-5 px-7 pb-7">
                   <div
                     className={`border-t pt-4 text-xs font-semibold ${
                       p.isHot ? 'border-[#2A2E3E] text-[#C9C6BD]' : 'border-[#E5E0D3] text-[#6E6A60]'

@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ShieldCheck, Zap, Sparkles, CheckCircle2, ArrowLeft, Store, AlertCircle } from 'lucide-react';
+import Image from 'next/image';
+import { ShieldCheck, CheckCircle2, ArrowLeft, Store, AlertCircle } from 'lucide-react';
 
 const display = { fontFamily: 'var(--font-display), sans-serif' };
 
@@ -20,24 +21,37 @@ const METHODS = [
   { tag: '方法 3', title: '醒來後貼上', desc: '酒醒後才貼上亦可使用。', best: false },
 ];
 
+// 成分：包裝背面暫時仍沿用宿醉貼內容，正式成分待品牌確認後補上
 const COMING = [
   {
-    id: 'energy',
-    icon: Zap,
-    name: '能量貼',
-    enName: 'Energy Boost Patch',
-    tagline: '提神 ‧ 專注 ‧ 隨身補給',
-    desc: '為加班族、學生及運動人士設計。透皮緩釋技術，讓提神成分在貼用期間持續釋放，毋須飲用提神飲品。',
-    ingredients: ['維他命 B12 + B6 複合配方', '天然綠茶咖啡因及瓜拿納萃取物', '輔酶 Q10（CoQ10）'],
+    id: 'fasting',
+    image: '/images/pack-fasting.webp',
+    packBg: '#83D4F1',
+    name: '斷食維他命補充貼',
+    enName: 'Fasting Vitamin Patch',
+    hook: '“I don’t want exhausted during my fasting day.”',
+    tagline: '持續補充 ‧ 維持全日狀態',
+    desc: '為斷食日而設。透皮緩釋技術，讓維他命在貼用期間持續補充，毋須配水吞服。',
   },
   {
     id: 'beauty',
-    icon: Sparkles,
+    image: '/images/pack-beauty.webp',
+    packBg: '#F5AFB7',
     name: '美顏貼',
-    enName: 'Beauty Collagen Patch',
-    tagline: '水潤 ‧ 抗氧 ‧ 隨身養膚',
-    desc: '將小分子膠原蛋白與玻尿酸以透皮方式持續釋放，隨時隨地為肌膚補充。',
-    ingredients: ['水解膠原蛋白（Hydrolyzed Collagen）', '玻尿酸（Hyaluronic Acid）及維他命 C', '谷胱甘肽（Glutathione）'],
+    enName: 'Beauty Patch',
+    hook: '“I don’t want a dull skin.”',
+    tagline: '日常保養 ‧ 隨身養膚',
+    desc: '為日常護膚而設，以透皮方式持續釋放，隨時隨地為肌膚補充。',
+  },
+  {
+    id: 'liver',
+    image: '/images/pack-liver.webp',
+    packBg: '#003845',
+    name: '護肝貼',
+    enName: 'Liver Care Patch',
+    hook: '“I don’t want a tired liver.”',
+    tagline: '日常保養 ‧ 維持狀態',
+    desc: '為經常應酬、作息繁忙的你而設，貼一片作日常保養。',
   },
 ];
 
@@ -106,14 +120,16 @@ export default function ProductsPage() {
                 <p style={display} className="m-0 text-lg font-bold tracking-[0.04em] text-[#2A2C35]">HANGOVER PATCH</p>
               </div>
 
-              {/* TODO：換成 <Image src="/hangover-box.png" ... /> */}
-              <div className="flex flex-col gap-3 rounded-2xl bg-[#12141C] p-6 text-[#F6F3EC]">
-                <p style={display} className="m-0 text-xs font-bold uppercase tracking-[0.18em] text-[#F2B544]">help</p>
-                <p className="m-0 text-xl font-black italic">“I don’t want a hangover.”</p>
-                <div className="flex flex-wrap justify-between gap-2 border-t border-[#2A2E3E] pt-3 text-xs text-[#C9C6BD]">
-                  <span>維他命 + 抗氧化劑 + 營養素</span>
-                  <span className="font-bold text-[#F2B544]">5 貼 / 盒</span>
-                </div>
+              <div className="overflow-hidden rounded-2xl bg-[#FEFEFE]">
+                <Image
+                  src="/images/hangover-box.webp"
+                  alt="PATCH ON 宿醉貼包裝盒（5 貼裝）及單片裝"
+                  width={1600}
+                  height={1600}
+                  priority
+                  sizes="(min-width: 1024px) 400px, 90vw"
+                  className="h-auto w-full"
+                />
               </div>
 
               <ul className="m-0 flex list-none flex-col gap-2 p-0 text-sm font-bold text-[#12141C]">
@@ -198,30 +214,33 @@ export default function ProductsPage() {
             <div className="flex flex-col gap-3">
               <p style={display} className="m-0 text-sm uppercase tracking-[0.18em] text-[#6B5A2E]">New lineup</p>
               <h2 className="m-0 text-[clamp(28px,3.5vw,40px)] font-black">即將推出</h2>
-              <p className="m-0 text-[#4A4D58]">為日常精力補充與肌膚保養而設的全新透皮貼片。</p>
+              <p className="m-0 text-[#4A4D58]">斷食、美顏、護肝三款全新透皮貼片，即將登場。</p>
             </div>
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              {COMING.map(({ id, icon: Icon, name, enName, tagline, desc, ingredients }) => (
-                <div key={id} className="flex flex-col justify-between overflow-hidden rounded-3xl bg-white">
-                  <div className="flex flex-col gap-4 p-8">
-                    <div className="flex items-center justify-between">
-                      <span className="rounded-full bg-[#EAE5D8] px-3 py-1 text-[11px] font-bold text-[#4A4D58]">Coming soon 敬請期待</span>
-                      <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#12141C]">
-                        <Icon className="h-5 w-5 text-[#F2B544]" aria-hidden="true" />
-                      </span>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              {COMING.map(({ id, image, packBg, name, enName, hook, tagline, desc }) => (
+                <div key={id} className="flex flex-col overflow-hidden rounded-3xl bg-white">
+                  <div className="px-5 pt-5">
+                    <div className="overflow-hidden rounded-2xl" style={{ backgroundColor: packBg }}>
+                      <Image src={image} alt={`${name} ${enName} 包裝`} width={540} height={484} sizes="(min-width: 768px) 360px, 90vw" className="h-auto w-full" />
                     </div>
+                  </div>
+                  <div className="flex flex-1 flex-col gap-3 p-7">
+                    <span className="self-start rounded-full bg-[#EAE5D8] px-3 py-1 text-[11px] font-bold text-[#4A4D58]">Coming soon 敬請期待</span>
                     <div className="flex flex-col gap-1">
                       <h3 className="m-0 text-2xl font-black">{name}</h3>
                       <p style={display} className="m-0 text-sm font-bold text-[#6E6A60]">{enName}</p>
                     </div>
+                    <p className="m-0 text-[15px] italic text-[#4A4D58]">{hook}</p>
                     <p className="m-0 text-sm font-bold text-[#6B5A2E]">{tagline}</p>
                     <p className="m-0 text-[15px] leading-[1.7] text-[#4A4D58]">{desc}</p>
-                    <div className="flex flex-col gap-1.5 rounded-2xl bg-[#F6F3EC] p-5 text-sm">
-                      <p className="m-0 font-bold">預計核心成分</p>
-                      {ingredients.map((i) => (
-                        <p key={i} className="m-0 text-[#4A4D58]">‧ {i}</p>
-                      ))}
+                  </div>
+                  <div className="flex flex-wrap justify-between gap-2 border-t border-[#E5E0D3] px-7 py-5 text-sm font-semibold text-[#6E6A60]">
+                    <span>5 貼 / 盒 ‧ 美國製造</span>
+                    <span>成分即將公佈</span>
+                  </div>
+                </div>
+              ))}
                     </div>
                   </div>
                   <div className="border-t border-[#E5E0D3] px-8 py-5 text-sm font-semibold text-[#6E6A60]">
