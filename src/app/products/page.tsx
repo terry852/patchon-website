@@ -241,13 +241,6 @@ export default function ProductsPage() {
                   </div>
                 </div>
               ))}
-                    </div>
-                  </div>
-                  <div className="border-t border-[#E5E0D3] px-8 py-5 text-sm font-semibold text-[#6E6A60]">
-                    預計上市：即將登場
-                  </div>
-                </div>
-              ))}
             </div>
           </section>
         )}
