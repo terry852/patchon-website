@@ -177,7 +177,7 @@ export default function RetailNetworkPage() {
           <p style={display} className="m-0 text-sm uppercase tracking-[0.18em] text-[#F2B544]">Where to buy</p>
           <h1 className="m-0 text-[clamp(36px,5vw,60px)] font-black leading-tight">銷售網絡與合作據點</h1>
           <p className="m-0 max-w-2xl text-lg leading-[1.7] text-[#C9C6BD]">
-            PATCH ON + 已於指定網店、莎莎 SaSa 及 King’s Wine Cellar 全港門市有售。
+            PATCHON 已於指定網店、莎莎 SaSa 及 King’s Wine Cellar 全港門市有售。
           </p>
         </div>
       </section>
@@ -297,7 +297,7 @@ export default function RetailNetworkPage() {
         {/* B2B */}
         <section className="flex flex-wrap items-center justify-between gap-8 rounded-[32px] bg-[#12141C] p-8 text-[#F6F3EC] md:p-12">
           <div className="flex min-w-0 flex-[1_1_420px] flex-col gap-2">
-            <h2 className="m-0 text-2xl font-bold">成為 PATCH ON + 經銷夥伴？</h2>
+            <h2 className="m-0 text-2xl font-bold">成為 PATCHON 經銷夥伴？</h2>
             <p className="m-0 max-w-xl text-[#C9C6BD]">我們歡迎藥房、連鎖零售、診所及健身中心加入分銷網絡。</p>
           </div>
           <a
@@ -312,7 +312,7 @@ export default function RetailNetworkPage() {
 
       <footer className="bg-[#12141C] px-6 py-10 text-sm text-[#9A9DAB]">
         <div className="mx-auto max-w-6xl leading-[1.7]">
-          免責聲明：PATCH ON + 產品為保健營養輔助貼片，並非藥物，不能用作診斷、治療或預防任何疾病。請適量飲酒。
+          免責聲明：PATCHON 產品為保健營養輔助貼片，並非藥物，不能用作診斷、治療或預防任何疾病。請適量飲酒。
         </div>
       </footer>
     </div>

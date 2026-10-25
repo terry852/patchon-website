@@ -16,11 +16,11 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "PATCH ON+ 宿醉貼 | 精密透皮貼片",
+  title: "PATCHON 宿醉貼 | 精密透皮貼片",
   description:
-    "PATCH ON+ 透皮貼片：飲酒前 20 分鐘貼上，唔使食、唔使沖水，效用可長達 24 小時。莎莎、King’s Wine Cellar 及指定網店有售。",
+    "PATCHON 透皮貼片：飲酒前 20 分鐘貼上，唔使食、唔使沖水，效用可長達 24 小時。莎莎、King’s Wine Cellar 及指定網店有售。",
   openGraph: {
-    title: "PATCH ON+ 宿醉貼",
+    title: "PATCHON 宿醉貼",
     description: "飲酒前貼一片，陪你盡興到最後。",
     locale: "zh_HK",
     type: "website",

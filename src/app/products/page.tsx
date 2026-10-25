@@ -123,7 +123,7 @@ export default function ProductsPage() {
               <div className="overflow-hidden rounded-2xl bg-[#FEFEFE]">
                 <Image
                   src="/images/hangover-box.webp"
-                  alt="PATCH ON 宿醉貼包裝盒（5 貼裝）及單片裝"
+                  alt="PATCHON 宿醉貼包裝盒（5 貼裝）及單片裝"
                   width={1600}
                   height={1600}
                   priority
@@ -150,7 +150,7 @@ export default function ProductsPage() {
                 <p style={display} className="m-0 text-sm uppercase tracking-[0.18em] text-[#6B5A2E]">Product details</p>
                 <h3 className="m-0 text-2xl font-black">美國研發配方</h3>
                 <p className="m-0 leading-[1.7] text-[#4A4D58]">
-                  PATCH ON 宿醉貼採用透皮吸收技術（Transdermal Patch），讓配方成分經皮膚持續緩慢釋放，毋須經過腸胃。飲酒前貼上，陪你盡興到最後。
+                  PATCHON 宿醉貼採用透皮吸收技術（Transdermal Patch），讓配方成分經皮膚持續緩慢釋放，毋須經過腸胃。飲酒前貼上，陪你盡興到最後。
                 </p>
               </div>
 
@@ -248,7 +248,7 @@ export default function ProductsPage() {
 
       <footer className="bg-[#12141C] px-6 py-10 text-sm text-[#9A9DAB]">
         <div className="mx-auto max-w-6xl leading-[1.7]">
-          免責聲明：PATCH ON + 產品為保健營養輔助貼片，並非藥物，不能用作診斷、治療或預防任何疾病。使用效果因人而異。請適量飲酒。
+          免責聲明：PATCHON 產品為保健營養輔助貼片，並非藥物，不能用作診斷、治療或預防任何疾病。使用效果因人而異。請適量飲酒。
         </div>
       </footer>
     </div>

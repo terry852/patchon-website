@@ -52,10 +52,10 @@ export default function Home() {
         titleA: '精密透皮吸收，',
         titleB: '貼上就得。',
         subtitle:
-          'PATCH ON + 以透皮技術，讓活性營養經皮膚吸收，毋須經過腸胃。唔使食、唔使沖水，細細片放銀包都得。',
+          'PATCHON 以透皮技術，讓活性營養經皮膚吸收，毋須經過腸胃。唔使食、唔使沖水，細細片放銀包都得。',
         btnProducts: '瀏覽貼片系列',
         btnHowto: '了解點用',
-        imageAlt: 'PATCH ON 宿醉貼包裝盒及單片裝',
+        imageAlt: 'PATCHON 宿醉貼包裝盒及單片裝',
       },
       // 只保留品牌官方資料中已有的數字；95% / 100% 等數字待有測試報告再加
       stats: [
@@ -64,7 +64,7 @@ export default function Home() {
         { value: '24 hr', label: '效用可長達', desc: '不建議連續使用超過 24 小時' },
       ],
       why: {
-        eyebrow: 'Why PATCH ON +',
+        eyebrow: 'Why PATCHON',
         title: '一片貼劑，三個理由',
         items: [
           { icon: Wallet, title: '方便', desc: '細細片放銀包、褲袋都得，唔使搵水送藥，隨時隨地貼。' },
@@ -73,9 +73,9 @@ export default function Home() {
         ],
       },
       science: {
-        eyebrow: 'The science of PATCH ON +',
+        eyebrow: 'The science of PATCHON',
         title: '為什麼選擇透皮吸收？',
-        desc: '口服膠囊或錠劑需要經過胃酸分解與肝臟首過代謝。PATCH ON + 採用矩陣透皮系統，讓營養經皮膚進入體內。',
+        desc: '口服膠囊或錠劑需要經過胃酸分解與肝臟首過代謝。PATCHON 採用矩陣透皮系統，讓營養經皮膚進入體內。',
         items: [
           { icon: Microscope, title: '微孔透皮導引', desc: '配方幫助營養成分平穩穿透皮膚屏障。' },
           { icon: Zap, title: '毋須經過腸胃', desc: '唔使配水吞服，適合飲酒場合隨時使用。' },
@@ -84,7 +84,7 @@ export default function Home() {
       },
       products: {
         eyebrow: 'Product series',
-        title: 'PATCH ON + 貼片系列',
+        title: 'PATCHON 貼片系列',
         subtitle: '針對不同生活情境研發：宿醉貼現已有售，斷食、美顏、護肝系列即將推出。',
         more: '查看完整產品細節',
         all: '查看全部產品與成分規格',
@@ -161,7 +161,7 @@ export default function Home() {
       network: {
         eyebrow: 'Retail & distribution',
         title: '銷售網絡與合作據點',
-        subtitle: 'PATCH ON + 已於莎莎、King’s Wine Cellar 全港門市及指定網店有售。',
+        subtitle: 'PATCHON 已於莎莎、King’s Wine Cellar 全港門市及指定網店有售。',
         all: '查看全部門市及地址',
         stores: [
           { name: '莎莎 SaSa', type: '實體門市', loc: '港九新界指定分店' },
@@ -170,7 +170,7 @@ export default function Home() {
           { name: 'Dimples 掂鋪', type: '網上平台', loc: '官方指定線上分銷' },
         ],
         b2bTitle: '成為合作藥房或分銷商？',
-        b2bDesc: '我們誠邀連鎖藥房、健身中心、診所及電商平台加入 PATCH ON + 經銷網絡。',
+        b2bDesc: '我們誠邀連鎖藥房、健身中心、診所及電商平台加入 PATCHON 經銷網絡。',
         b2bBtn: '聯繫商務合作團隊',
       },
       cta: {
@@ -181,8 +181,8 @@ export default function Home() {
       },
       footer: {
         disclaimer:
-          '免責聲明：PATCH ON + 產品為保健營養輔助貼片，並非藥物，不能用作診斷、治療或預防任何疾病。使用效果因人而異。請適量飲酒。',
-        copy: '© 2026 PATCH ON + Laboratories. All Rights Reserved.',
+          '免責聲明：PATCHON 產品為保健營養輔助貼片，並非藥物，不能用作診斷、治療或預防任何疾病。使用效果因人而異。請適量飲酒。',
+        copy: '© 2026 PATCHON Laboratories. All Rights Reserved.',
         privacy: '私隱政策',
         terms: '使用條款',
       },
@@ -202,10 +202,10 @@ export default function Home() {
         titleA: 'Precision transdermal care.',
         titleB: 'Just patch on.',
         subtitle:
-          'PATCH ON + uses transdermal delivery so active nutrients are absorbed through the skin, not the gut. No pills, no water — small enough for your wallet.',
+          'PATCHON uses transdermal delivery so active nutrients are absorbed through the skin, not the gut. No pills, no water — small enough for your wallet.',
         btnProducts: 'Browse the series',
         btnHowto: 'How to use',
-        imageAlt: 'PATCH ON Hangover Patch box and single sachet',
+        imageAlt: 'PATCHON Hangover Patch box and single sachet',
       },
       stats: [
         { value: '20 min', label: 'Before drinking', desc: 'The ideal time to apply' },
@@ -213,7 +213,7 @@ export default function Home() {
         { value: '24 hr', label: 'Lasting effect', desc: 'Do not wear for more than 24 hours' },
       ],
       why: {
-        eyebrow: 'Why PATCH ON +',
+        eyebrow: 'Why PATCHON',
         title: 'One patch, three reasons',
         items: [
           { icon: Wallet, title: 'Convenient', desc: 'Fits in a wallet or pocket. No water, no pills — apply anywhere.' },
@@ -222,9 +222,9 @@ export default function Home() {
         ],
       },
       science: {
-        eyebrow: 'The science of PATCH ON +',
+        eyebrow: 'The science of PATCHON',
         title: 'Why transdermal?',
-        desc: 'Oral capsules and tablets must pass through stomach acid and first-pass liver metabolism. PATCH ON + uses a matrix transdermal system to deliver nutrients through the skin.',
+        desc: 'Oral capsules and tablets must pass through stomach acid and first-pass liver metabolism. PATCHON uses a matrix transdermal system to deliver nutrients through the skin.',
         items: [
           { icon: Microscope, title: 'Micro-pore delivery', desc: 'The formula helps ingredients pass steadily through the skin barrier.' },
           { icon: Zap, title: 'Skips the gut', desc: 'Nothing to swallow, so it is easy to use on a night out.' },
@@ -233,7 +233,7 @@ export default function Home() {
       },
       products: {
         eyebrow: 'Product series',
-        title: 'The PATCH ON + series',
+        title: 'The PATCHON series',
         subtitle: 'Made for everyday moments. The Hangover Patch is available now; Fasting, Beauty and Liver Care are coming soon.',
         more: 'View product details',
         all: 'View all products and ingredients',
@@ -308,7 +308,7 @@ export default function Home() {
       network: {
         eyebrow: 'Retail & distribution',
         title: 'Where to buy',
-        subtitle: 'PATCH ON + is available at SaSa and King’s Wine Cellar stores across Hong Kong, and selected online stores.',
+        subtitle: 'PATCHON is available at SaSa and King’s Wine Cellar stores across Hong Kong, and selected online stores.',
         all: 'See all stores and addresses',
         stores: [
           { name: 'SaSa', type: 'Retail store', loc: 'Selected stores across HK' },
@@ -328,8 +328,8 @@ export default function Home() {
       },
       footer: {
         disclaimer:
-          'Disclaimer: PATCH ON + products are wellness patches, not medicines, and are not intended to diagnose, treat, cure or prevent any disease. Results may vary. Please drink responsibly.',
-        copy: '© 2026 PATCH ON + Laboratories. All Rights Reserved.',
+          'Disclaimer: PATCHON products are wellness patches, not medicines, and are not intended to diagnose, treat, cure or prevent any disease. Results may vary. Please drink responsibly.',
+        copy: '© 2026 PATCHON Laboratories. All Rights Reserved.',
         privacy: 'Privacy Policy',
         terms: 'Terms of Service',
       },
@@ -434,7 +434,7 @@ export default function Home() {
       <section className="bg-[#12141C] text-[#F6F3EC]">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-14 px-6 pb-16 pt-16 md:pt-20">
           <div className="flex min-w-0 flex-[1_1_460px] flex-col gap-6">
-            <Eyebrow dark>PATCH ON + · {text.hero.badge}</Eyebrow>
+            <Eyebrow dark>PATCHON · {text.hero.badge}</Eyebrow>
             <h1 className="m-0 text-[clamp(40px,6vw,72px)] font-black leading-[1.1]">
               {text.hero.titleA}
               <br />
