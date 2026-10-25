@@ -182,7 +182,7 @@ export default function Home() {
       footer: {
         disclaimer:
           '免責聲明：PATCHON 產品為保健營養輔助貼片，並非藥物，不能用作診斷、治療或預防任何疾病。使用效果因人而異。請適量飲酒。',
-        copy: '© 2026 PATCHON Laboratories. All Rights Reserved.',
+        copy: '© 2026 Awesome Enterprise Company Limited. All Rights Reserved.',
         privacy: '私隱政策',
         terms: '使用條款',
       },
@@ -329,7 +329,7 @@ export default function Home() {
       footer: {
         disclaimer:
           'Disclaimer: PATCHON products are wellness patches, not medicines, and are not intended to diagnose, treat, cure or prevent any disease. Results may vary. Please drink responsibly.',
-        copy: '© 2026 PATCHON Laboratories. All Rights Reserved.',
+        copy: '© 2026 Awesome Enterprise Company Limited. All Rights Reserved.',
         privacy: 'Privacy Policy',
         terms: 'Terms of Service',
       },
