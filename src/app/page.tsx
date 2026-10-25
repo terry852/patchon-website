@@ -361,8 +361,8 @@ export default function Home() {
       {/* 1. Navbar */}
       <header className="sticky top-0 z-50 bg-[#12141C] text-[#F6F3EC]">
         <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between gap-4 px-6">
-          <Link href="/" style={display} className="text-[22px] font-bold tracking-[0.04em] text-[#F6F3EC] no-underline">
-            PATCH ON<span className="text-[#F2B544]">+</span>
+          <Link href="/" aria-label="PATCHON 首頁" className="flex shrink-0 items-center">
+            <Image src="/images/logo-patchon.png" alt="PATCHON Healthastic" width={728} height={305} priority className="h-10 w-auto" />
           </Link>
 
           <nav aria-label="Main" className="hidden items-center gap-7 text-[15px] lg:flex">
@@ -724,9 +724,7 @@ export default function Home() {
       <footer className="bg-[#12141C] px-6 py-12 text-sm text-[#9A9DAB]">
         <div className="mx-auto flex max-w-6xl flex-wrap justify-between gap-6 leading-[1.7]">
           <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-2">
-            <span style={display} className="text-lg font-bold text-[#F6F3EC]">
-              PATCH ON<span className="text-[#F2B544]">+</span>
-            </span>
+            <Image src="/images/logo-patchon.png" alt="PATCHON Healthastic" width={728} height={305} className="h-12 w-auto self-start" />
             <p className="m-0 max-w-xl">{text.footer.disclaimer}</p>
             <p className="m-0 font-semibold text-[#C9C6BD]">{text.footer.copy}</p>
           </div>

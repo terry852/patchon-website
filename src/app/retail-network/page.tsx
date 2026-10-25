@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Store, MapPin, Phone, Search, Globe, Mail, ExternalLink, ArrowLeft } from 'lucide-react';
 
 const display = { fontFamily: 'var(--font-display), sans-serif' };
@@ -158,8 +159,8 @@ export default function RetailNetworkPage() {
             <ArrowLeft className="h-5 w-5" aria-hidden="true" />
             返回首頁
           </Link>
-          <Link href="/" style={display} className="text-[22px] font-bold tracking-[0.04em] text-[#F6F3EC]">
-            PATCH ON<span className="text-[#F2B544]">+</span>
+          <Link href="/" aria-label="PATCHON 首頁" className="flex shrink-0 items-center">
+            <Image src="/images/logo-patchon.png" alt="PATCHON Healthastic" width={728} height={305} priority className="h-10 w-auto" />
           </Link>
           <Link
             href="/products"
