@@ -1,14 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-yellow: #F5B800;
-  --color-brand-yellow-hover: #D9A200;
-  --color-brand-dark: #0A0A0F;
+  --color-brand-ink: #12141C;
+  --color-brand-ink-2: #1E2130;
+  --color-brand-cream: #F6F3EC;
+  --color-brand-sand: #EAE5D8;
+  --color-brand-amber: #F2B544;
+  --color-brand-amber-hover: #F6C766;
+  --color-brand-bronze: #6B5A2E;
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    background-color: #0A0A0F;
-    color: #F8FAFC;
+    margin: 0;
+    background-color: #F6F3EC;
+    color: #12141C;
+    font-family: var(--font-sans), system-ui, sans-serif;
   }
 }

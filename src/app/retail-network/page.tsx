@@ -1,19 +1,13 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { 
-  Store, 
-  MapPin, 
-  Phone, 
-  Search, 
-  Globe, 
-  Mail, 
-  ExternalLink,
-  ChevronRight,
-  Sparkles,
-  ArrowLeft
-} from 'lucide-react';
 import Link from 'next/link';
+import { Store, MapPin, Phone, Search, Globe, Mail, ExternalLink, ArrowLeft } from 'lucide-react';
+
+const display = { fontFamily: 'var(--font-display), sans-serif' };
+
+type Region = 'all' | 'hk' | 'kl' | 'nt';
+type Brand = 'all' | 'sasa' | 'kings';
 
 // 門市與線上通路資料數據
 const ONLINE_STORES = [
@@ -114,216 +108,212 @@ const SASA_STORES = [
   { region: 'nt', district: '東涌', name: '莎莎 東薈城店', address: '東涌達東路 20 號東薈城 1 樓 116 號舖', phone: '(852) 2109 3898' }
 ];
 
+const REGIONS: { id: Region; label: string }[] = [
+  { id: 'all', label: '全部區域' },
+  { id: 'hk', label: '香港島' },
+  { id: 'kl', label: '九龍' },
+  { id: 'nt', label: '新界' },
+];
+
+const BRANDS: { id: Brand; label: string }[] = [
+  { id: 'all', label: '全部' },
+  { id: 'sasa', label: '莎莎 SaSa' },
+  { id: 'kings', label: 'King’s Wine Cellar' },
+];
+
+const pill = (active: boolean) =>
+  `min-h-[44px] rounded-full px-4 text-sm font-bold transition-colors ${
+    active ? 'bg-[#12141C] text-[#F6F3EC]' : 'bg-[#EAE5D8] text-[#4A4D58] hover:bg-[#DDD6C5]'
+  }`;
+
 export default function RetailNetworkPage() {
-  const [selectedRegion, setSelectedRegion] = useState<'all' | 'hk' | 'kl' | 'nt'>('all');
+  const [selectedRegion, setSelectedRegion] = useState<Region>('all');
+  const [selectedBrand, setSelectedBrand] = useState<Brand>('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedBrand, setSelectedBrand] = useState<'all' | 'sasa' | 'kings'>('all');
 
-  // 合併門市資料並進行即時篩選
   const filteredPhysicalStores = useMemo(() => {
-    let stores = [];
-    if (selectedBrand === 'all' || selectedBrand === 'sasa') {
-      stores.push(...SASA_STORES.map(s => ({ ...s, brand: 'SaSa 莎莎' })));
-    }
-    if (selectedBrand === 'all' || selectedBrand === 'kings') {
-      stores.push(...KINGS_WINE_STORES.map(s => ({ ...s, brand: 'King\'s Wine Cellar' })));
-    }
-
+    const stores = [
+      ...(selectedBrand !== 'kings' ? SASA_STORES.map((s) => ({ ...s, brand: '莎莎 SaSa' })) : []),
+      ...(selectedBrand !== 'sasa' ? KINGS_WINE_STORES.map((s) => ({ ...s, brand: 'King’s Wine Cellar' })) : []),
+    ];
+    const q = searchQuery.trim().toLowerCase();
     return stores.filter((store) => {
       const matchRegion = selectedRegion === 'all' || store.region === selectedRegion;
-      const matchSearch = 
-        store.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        store.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        store.district.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        store.phone.includes(searchQuery);
-
+      const matchSearch =
+        !q ||
+        store.name.toLowerCase().includes(q) ||
+        store.address.toLowerCase().includes(q) ||
+        store.district.toLowerCase().includes(q) ||
+        store.phone.includes(q);
       return matchRegion && matchSearch;
     });
   }, [selectedRegion, searchQuery, selectedBrand]);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-amber-300">
-      
-      {/* 頂部導覽 */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2 text-slate-600 hover:text-amber-600 transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-            <span className="text-sm font-bold">返回首頁</span>
+    <div className="min-h-screen bg-[#F6F3EC] text-[#12141C] selection:bg-[#F2B544] selection:text-[#12141C]">
+      {/* Header */}
+      <header className="sticky top-0 z-40 bg-[#12141C] text-[#F6F3EC]">
+        <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between gap-4 px-6">
+          <Link href="/" className="inline-flex min-h-[44px] items-center gap-2 text-sm font-bold text-[#D9D6CE] hover:text-[#F2B544]">
+            <ArrowLeft className="h-5 w-5" aria-hidden="true" />
+            返回首頁
           </Link>
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-amber-400 rounded-lg flex items-center justify-center font-black text-slate-950 text-lg">
-              +
-            </div>
-            <span className="text-xl font-black text-slate-900">
-              PATCH ON<span className="text-amber-500">+</span>
-            </span>
-          </div>
+          <Link href="/" style={display} className="text-[22px] font-bold tracking-[0.04em] text-[#F6F3EC]">
+            PATCH ON<span className="text-[#F2B544]">+</span>
+          </Link>
+          <Link
+            href="/products"
+            className="hidden min-h-[44px] items-center rounded-full border border-[#555A6B] px-5 text-sm font-bold text-[#F6F3EC] hover:border-[#F2B544] sm:inline-flex"
+          >
+            貼片系列
+          </Link>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        
-        {/* Title Section */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="inline-block bg-amber-100 text-amber-900 font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-3">
-            WHERE TO BUY
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-slate-900 mb-4">
-            銷售網絡與合作據點
-          </h1>
-          <p className="text-slate-600 text-base">
-            PATCH ON + 產品已正式進駐各大指定線上平台、莎莎 SaSa 及 King's Wine Cellar 全港門市。
+      {/* Hero */}
+      <section className="bg-[#12141C] px-6 pb-16 pt-12 text-[#F6F3EC]">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4">
+          <p style={display} className="m-0 text-sm uppercase tracking-[0.18em] text-[#F2B544]">Where to buy</p>
+          <h1 className="m-0 text-[clamp(36px,5vw,60px)] font-black leading-tight">銷售網絡與合作據點</h1>
+          <p className="m-0 max-w-2xl text-lg leading-[1.7] text-[#C9C6BD]">
+            PATCH ON + 已於指定網店、莎莎 SaSa 及 King’s Wine Cellar 全港門市有售。
           </p>
         </div>
+      </section>
 
-        {/* 1. 線上分銷商戶 Section */}
-        <section className="mb-16">
-          <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center space-x-2">
-            <Globe className="w-5 h-5 text-amber-500" />
-            <span>網上分銷商戶 (Online Retailers)</span>
+      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-6 py-16">
+        {/* Online */}
+        <section className="flex flex-col gap-6">
+          <h2 className="m-0 flex items-center gap-2 text-2xl font-black">
+            <Globe className="h-6 w-6 text-[#6B5A2E]" aria-hidden="true" />
+            網上購買
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {ONLINE_STORES.map((online, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex items-center justify-between">
-                <div>
-                  <span className="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-0.5 rounded mb-2 inline-block">
-                    {online.badge}
-                  </span>
-                  <h3 className="text-2xl font-black text-slate-900">{online.name}</h3>
-                  <p className="text-xs text-slate-500 mt-1">{online.type}</p>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {ONLINE_STORES.map((online) => (
+              // TODO：url 換成實際店舖連結
+              <a
+                key={online.name}
+                href={online.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between gap-4 rounded-3xl bg-white p-8 transition-colors hover:bg-[#12141C] hover:text-[#F6F3EC]"
+              >
+                <div className="flex flex-col gap-2">
+                  <span className="self-start rounded-full bg-[#F2B544] px-3 py-1 text-xs font-bold text-[#12141C]">{online.badge}</span>
+                  <span className="text-2xl font-black">{online.name}</span>
+                  <span className="text-sm text-[#6E6A60] group-hover:text-[#C9C6BD]">{online.type}</span>
                 </div>
-                <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center text-slate-600">
-                  <ExternalLink className="w-5 h-5" />
-                </div>
-              </div>
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#EAE5D8] text-[#12141C] group-hover:bg-[#F2B544]">
+                  <ExternalLink className="h-5 w-5" aria-hidden="true" />
+                </span>
+              </a>
             ))}
           </div>
         </section>
 
-        {/* 2. 實體門市 Search & Filter Section */}
-        <section className="mb-12">
-          <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center space-x-2">
-            <Store className="w-5 h-5 text-amber-500" />
-            <span>實體專賣門市 (Physical Stores)</span>
+        {/* Physical stores */}
+        <section className="flex flex-col gap-6">
+          <h2 className="m-0 flex items-center gap-2 text-2xl font-black">
+            <Store className="h-6 w-6 text-[#6B5A2E]" aria-hidden="true" />
+            實體門市
           </h2>
 
-          {/* 控制面板 */}
-          <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4 md:space-y-0 md:flex md:items-center md:justify-between md:gap-4 mb-8">
-            
-            {/* 搜尋欄 */}
-            <div className="relative flex-1">
-              <Search className="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
-              <input 
-                type="text"
-                placeholder="搜尋地區、地址或門市名稱..."
+          <div className="flex flex-col gap-5 rounded-3xl bg-[#EAE5D8] p-6">
+            <div className="relative">
+              <label htmlFor="store-search" className="sr-only">搜尋門市</label>
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#6E6A60]" aria-hidden="true" />
+              <input
+                id="store-search"
+                type="search"
+                placeholder="搜尋地區、地址或門市名稱"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                className="min-h-[52px] w-full rounded-2xl border-0 bg-[#F6F3EC] pl-12 pr-4 text-base text-[#12141C] placeholder:text-[#6E6A60] focus:outline-none focus:ring-2 focus:ring-[#F2B544]"
               />
             </div>
-
-            {/* 品牌篩選 */}
-            <div className="flex items-center space-x-2">
-              <button 
-                onClick={() => setSelectedBrand('all')}
-                className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${selectedBrand === 'all' ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
-              >
-                全部品牌
-              </button>
-              <button 
-                onClick={() => setSelectedBrand('sasa')}
-                className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${selectedBrand === 'sasa' ? 'bg-pink-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
-              >
-                莎莎 SaSa
-              </button>
-              <button 
-                onClick={() => setSelectedBrand('kings')}
-                className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${selectedBrand === 'kings' ? 'bg-amber-500 text-slate-950' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
-              >
-                King's Wine
-              </button>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <div role="group" aria-label="品牌" className="flex flex-wrap gap-2">
+                {BRANDS.map((b) => (
+                  <button key={b.id} onClick={() => setSelectedBrand(b.id)} aria-pressed={selectedBrand === b.id} className={pill(selectedBrand === b.id)}>
+                    {b.label}
+                  </button>
+                ))}
+              </div>
+              <div role="group" aria-label="地區" className="flex flex-wrap gap-2">
+                {REGIONS.map((r) => (
+                  <button key={r.id} onClick={() => setSelectedRegion(r.id)} aria-pressed={selectedRegion === r.id} className={pill(selectedRegion === r.id)}>
+                    {r.label}
+                  </button>
+                ))}
+              </div>
             </div>
-
-            {/* 地區分區按鈕 */}
-            <div className="flex items-center space-x-2 border-t md:border-t-0 pt-3 md:pt-0 border-slate-100">
-              {[
-                { id: 'all', label: '全部區域' },
-                { id: 'hk', label: '香港島' },
-                { id: 'kl', label: '九龍區' },
-                { id: 'nt', label: '新界區' }
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setSelectedRegion(tab.id as any)}
-                  className={`px-3 py-2 rounded-lg text-xs font-bold transition-all ${selectedRegion === tab.id ? 'bg-amber-400 text-slate-950' : 'text-slate-600 hover:bg-slate-100'}`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-
           </div>
 
-          {/* 門市數據清單 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <p className="m-0 text-sm font-semibold text-[#6E6A60]" aria-live="polite">
+            共 {filteredPhysicalStores.length} 間門市
+          </p>
+
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {filteredPhysicalStores.length > 0 ? (
-              filteredPhysicalStores.map((store, idx) => (
-                <div key={idx} className="bg-white p-6 rounded-2xl border border-slate-200/80 hover:border-amber-400 transition-all shadow-sm flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className={`text-[10px] font-black uppercase px-2.5 py-1 rounded-md ${store.brand.includes('SaSa') ? 'bg-pink-50 text-pink-700 border border-pink-200' : 'bg-amber-50 text-amber-800 border border-amber-200'}`}>
+              filteredPhysicalStores.map((store) => (
+                <div key={store.name} className="flex flex-col justify-between gap-4 rounded-2xl bg-white p-6">
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center justify-between gap-2">
+                      <span
+                        className={`rounded-full px-2.5 py-1 text-[11px] font-bold ${
+                          store.brand.includes('SaSa') ? 'bg-[#12141C] text-[#F6F3EC]' : 'bg-[#F2B544] text-[#12141C]'
+                        }`}
+                      >
                         {store.brand}
                       </span>
-                      <span className="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">
-                        {store.district}
-                      </span>
+                      <span className="rounded bg-[#EAE5D8] px-2 py-0.5 text-xs font-bold text-[#4A4D58]">{store.district}</span>
                     </div>
-
-                    <h3 className="text-lg font-bold text-slate-900 mb-2">
-                      {store.name}
-                    </h3>
-
-                    <p className="text-xs text-slate-600 mb-4 flex items-start space-x-1.5 leading-relaxed">
-                      <MapPin className="w-4 h-4 text-slate-400 flex-shrink-0 mt-0.5" />
-                      <span>{store.address}</span>
+                    <h3 className="m-0 text-lg font-bold">{store.name}</h3>
+                    <p className="m-0 flex items-start gap-1.5 text-sm leading-relaxed text-[#4A4D58]">
+                      <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#6E6A60]" aria-hidden="true" />
+                      {store.address}
                     </p>
                   </div>
-
                   {store.phone !== '-' && (
-                    <div className="pt-3 border-t border-slate-100 flex items-center text-xs font-semibold text-slate-500 space-x-1">
-                      <Phone className="w-3.5 h-3.5 text-slate-400" />
-                      <span>{store.phone}</span>
-                    </div>
+                    <a
+                      href={`tel:${store.phone.replace(/[^\d+]/g, '')}`}
+                      className="flex items-center gap-1.5 border-t border-[#E5E0D3] pt-3 text-sm font-semibold text-[#4A4D58] hover:text-[#12141C]"
+                    >
+                      <Phone className="h-4 w-4 text-[#6E6A60]" aria-hidden="true" />
+                      {store.phone}
+                    </a>
                   )}
                 </div>
               ))
             ) : (
-              <div className="col-span-full py-12 text-center text-slate-400 bg-white rounded-2xl border border-dashed border-slate-200">
-                找不到符合條件的門市，請嘗試搜尋其他關鍵字。
+              <div className="col-span-full rounded-2xl border border-dashed border-[#CFC9BA] py-12 text-center text-[#6E6A60]">
+                找不到符合條件的門市，請試試其他關鍵字。
               </div>
             )}
           </div>
         </section>
 
-        {/* 3. B2B 批發洽詢 */}
-        <section className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 mt-16 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div>
-            <h3 className="text-2xl font-bold mb-2">成為 PATCH ON + 經銷夥伴？</h3>
-            <p className="text-slate-400 text-sm max-w-xl">
-              我們非常歡迎藥局、健美連鎖門市、診所及健身中心加入分銷網絡。
-            </p>
+        {/* B2B */}
+        <section className="flex flex-wrap items-center justify-between gap-8 rounded-[32px] bg-[#12141C] p-8 text-[#F6F3EC] md:p-12">
+          <div className="flex min-w-0 flex-[1_1_420px] flex-col gap-2">
+            <h2 className="m-0 text-2xl font-bold">成為 PATCH ON + 經銷夥伴？</h2>
+            <p className="m-0 max-w-xl text-[#C9C6BD]">我們歡迎藥房、連鎖零售、診所及健身中心加入分銷網絡。</p>
           </div>
-          <a 
+          <a
             href="mailto:partner@patchon.com"
-            className="whitespace-nowrap bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-8 py-4 rounded-full text-sm transition-all shadow-lg shadow-amber-400/20 flex items-center space-x-2"
+            className="inline-flex min-h-[48px] items-center gap-2 whitespace-nowrap rounded-full bg-[#F2B544] px-7 font-bold text-[#12141C] hover:bg-[#F6C766]"
           >
-            <Mail className="w-4 h-4" />
-            <span>聯繫分銷團隊</span>
+            <Mail className="h-4 w-4" aria-hidden="true" />
+            聯繫分銷團隊
           </a>
         </section>
-
       </main>
+
+      <footer className="bg-[#12141C] px-6 py-10 text-sm text-[#9A9DAB]">
+        <div className="mx-auto max-w-6xl leading-[1.7]">
+          免責聲明：PATCH ON + 產品為保健營養輔助貼片，並非藥物，不能用作診斷、治療或預防任何疾病。請適量飲酒。
+        </div>
+      </footer>
     </div>
   );
 }
